@@ -30,7 +30,6 @@ def show_compare_cities():
             [
                 "Lucknow",
                 "Delhi",
-                "Mumbai",
                 "Bengaluru",
             ],
             key="compare_city1",
@@ -46,7 +45,6 @@ def show_compare_cities():
             [
                 "Lucknow",
                 "Delhi",
-                "Mumbai",
                 "Bengaluru",
             ],
             index=1,

@@ -158,7 +158,7 @@ def show_home():
 
                         sample_city = st.selectbox(
                             "Choose City",
-                            ["Lucknow", "Delhi", "Mumbai", "Bengaluru"],
+                            ["Lucknow", "Delhi", "Bengaluru"],
                             key="sample_city",
                         )
                     else:
