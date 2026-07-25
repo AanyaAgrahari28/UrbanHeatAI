@@ -1,3 +1,5 @@
+import gc
+
 import streamlit as st
 import plotly.graph_objects as go
 from utils.uhi_utils import run_analysis
@@ -77,6 +79,18 @@ def show_compare_cities():
                 method="AI",
             )
 
+            st.session_state.compare_city1_results = {
+                "heatmap_figure": city1_results["heatmap_figure"],
+                "recalculated_statistics": city1_results["recalculated_statistics"],
+                "ndvi_statistics_before_clipping": city1_results[
+                    "ndvi_statistics_before_clipping"
+                ],
+                "high_risk_percentage": city1_results["high_risk_percentage"],
+                "hotspot_area_km2": city1_results["hotspot_area_km2"],
+            }
+            del city1_results
+            gc.collect()
+
             city2_results = run_analysis(
                 city2,
                 None,
@@ -86,8 +100,17 @@ def show_compare_cities():
                 method="AI",
             )
 
-            st.session_state.compare_city1_results = city1_results
-            st.session_state.compare_city2_results = city2_results
+            st.session_state.compare_city2_results = {
+                "heatmap_figure": city2_results["heatmap_figure"],
+                "recalculated_statistics": city2_results["recalculated_statistics"],
+                "ndvi_statistics_before_clipping": city2_results[
+                    "ndvi_statistics_before_clipping"
+                ],
+                "high_risk_percentage": city2_results["high_risk_percentage"],
+                "hotspot_area_km2": city2_results["hotspot_area_km2"],
+            }
+            del city2_results
+            gc.collect()
 
     # ---------------------------------------
     # Stop if comparison not yet run
