@@ -145,7 +145,7 @@ def show_home():
                     )
 
                     sample = st.button(
-                        "Load Sample Dataset",
+                        "Choose from Sample",
                         key="sample_btn",
                         use_container_width=True,
                     )
