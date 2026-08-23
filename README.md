@@ -6,7 +6,9 @@ UrbanHeat AI is an intelligent geospatial analysis platform that helps identify 
 
 Built with **Python**, **Streamlit**, **Rasterio**, **Scikit-learn**, and **Google Gemini**, the application transforms raw satellite imagery into actionable insights for urban planners, researchers, and environmental professionals.
 
+
 **🚀 Live Demo:** https://urbanheatai.streamlit.app/
+
 
 ![UrbanHeat AI Banner](assets/images/homepage1.png)
 
