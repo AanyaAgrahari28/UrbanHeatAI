@@ -107,7 +107,7 @@ UrbanHeatAI/
 ## ⚙️ How It Works
 
 ### Step 1
-Load Landsat 9 satellite bands.
+Load Landsat 9 satellite bands. 
 
 ### Step 2
 Preprocess imagery and calculate environmental indices.
@@ -159,33 +159,6 @@ UrbanHeat AI can support:
 
 ---
 
-## ▶️ Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/AanyaAgrahari28/UrbanHeatAI.git
-```
-
-Move into the project directory
-
-```bash
-cd UrbanHeatAI
-```
-
-Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the application
-
-```bash
-streamlit run app.py
-```
-
----
 
 ## 📌 Key Highlights
 
@@ -202,13 +175,13 @@ streamlit run app.py
 
 ## 📸 Screenshots
 
-(assets/images/homepage2.png)
+![UrbanHeat AI Banner1](assets/images/homepage2.png)
 
-(assets/images/dashboard1.png)
+![UrbanHeat AI Banner2](assets/images/dashboard1.png)
 
-(assets/images/dashboard2.png)
+![UrbanHeat AI Banner3](assets/images/dashboard2.png)
 
-(assets/images/Compare_cities.png)
+![UrbanHeat AI Banner4](assets/images/Compare_cities.png)
 
 ---
 
