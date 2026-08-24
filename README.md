@@ -10,6 +10,8 @@ Built with **Python**, **Streamlit**, **Rasterio**, **Scikit-learn**, and **Goog
 **🚀 Live Demo:** https://urbanheatai.streamlit.app/
 
 
+
+
 ![UrbanHeat AI Banner](assets/images/homepage1.png)
 
 
@@ -200,13 +202,13 @@ streamlit run app.py
 
 ## 📸 Screenshots
 
-Add screenshots of:
+(assets/images/homepage2.png)
 
-- Home Page
-- Dashboard
-- AI Heatmap
-- Compare Cities
-- AI Recommendations
+(assets/images/dashboard1.png)
+
+(assets/images/dashboard2.png)
+
+(assets/images/Compare_cities.png)
 
 ---
 
