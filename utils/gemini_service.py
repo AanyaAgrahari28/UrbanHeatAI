@@ -3,11 +3,14 @@ import time
 from google import genai
 from google.genai import types
 
-client = genai.Client(
-    api_key=st.secrets["GEMINI_API_KEY"]
-)
+@st.cache_resource
+def get_client():
+    return genai.Client(
+        api_key=st.secrets["GEMINI_API_KEY"]
+    )
 
 def safe_generate(prompt, config=None):
+    client = get_client()
     for attempt in range(3):
         try:
             response = client.models.generate_content(
@@ -21,7 +24,7 @@ def safe_generate(prompt, config=None):
             print(f"Gemini Error: {e}")
 
             if attempt < 2:
-                time.sleep(2 ** attempt)   # 1s, 2s
+                time.sleep(2 * (2 ** attempt))   # 1s, 2s
             else:
                 return "⚠️ AI service is temporarily unavailable. Please try again."
 
