@@ -1,10 +1,29 @@
 import streamlit as st
+import time
 from google import genai
 from google.genai import types
 
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
+
+def safe_generate(prompt, config=None):
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.1-flash-lite",
+                contents=prompt,
+                config=config,
+            )
+            return response.text
+
+        except Exception as e:
+            print(f"Gemini Error: {e}")
+
+            if attempt < 2:
+                time.sleep(2 ** attempt)   # 1s, 2s
+            else:
+                return "⚠️ AI service is temporarily unavailable. Please try again."
 
 
 def generate_causes(analysis_data):
@@ -36,12 +55,7 @@ Rules:
 - Keep each bullet under 20 words.
 - Avoid repeating the same idea.
 """
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents=prompt,
-    )
-
-    return response.text
+    return safe_generate(prompt)
 
 def generate_recommendations(analysis_data):
     prompt = f"""
@@ -71,12 +85,7 @@ Rules:
 3. Recommendation
 """
 
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents=prompt,
-    )
-
-    return response.text
+    return safe_generate(prompt)
 
 
 def ask_planning_assistant(analysis_data, question):
@@ -107,16 +116,13 @@ Rules:
 - Never mention being an AI language model.
 """
 
-    response = client.models.generate_content(
-    model="gemini-3.1-flash-lite",
-    contents=prompt,
-    config=types.GenerateContentConfig(
+    return safe_generate(
+    prompt,
+    types.GenerateContentConfig(
         max_output_tokens=120,
         temperature=0.2,
     ),
 )
-
-    return response.text
 
 def generate_suggested_questions(analysis_data):
 
@@ -144,12 +150,7 @@ What should be done first?
 Return only the questions.
 """
 
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents=prompt,
-    )
-
-    return response.text
+    return safe_generate(prompt)
 
 def compare_cities_ai(city1, city2, metrics):
     prompt = f"""
@@ -186,13 +187,4 @@ Instructions:
 ...
 """
 
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            temperature=0.2,
-            max_output_tokens=180,
-        ),
-    )
-
-    return response.text
+    return safe_generate(prompt)
